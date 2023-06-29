@@ -1,0 +1,113 @@
+{% extends 'root.html' %}
+{% block header_script %}
+  <style>
+    html, body {
+      font-family: 'Poppins', sans-serif;
+    }
+    body::after {
+      content: '';
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      z-index: -99;
+      background-image: linear-gradient(#e7e7e7, #f9f9f9);
+    }
+    /* Content Section */
+    .content-section:hover .header:after {
+      opacity: 1;
+    }
+    .content-section .header .title {
+      position: relative;
+      z-index: 2;
+    }
+    .content-section .header h1 {
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .content-section .header h2 {
+      font-weight: 300;
+    }
+    .content-section .header h3 {
+      font-size: 20px;
+      font-weight: 300;
+      color: #f8f8f8;
+    }
+    /* Header */
+    .content-section .header {
+      padding: 2%;
+      margin-top: 15%;
+      border-radius: 15px 15px 0px 0px;
+      position: relative;
+      color: #f2f2f2;
+      background-image: linear-gradient(
+        to right,
+        #062d58,
+        #0f6fd7,
+        #c4ff4d
+      );
+    }
+    .content-section .header::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      border-radius: 15px 15px 0px 0px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+      background-image: linear-gradient(
+        to right,
+        #031930,
+        #052548,
+        #091420
+      );
+    }
+    /* Body */
+    .content-section .body {
+      padding: 2%;
+      background-color: #fff;
+    }
+    .body .box a {
+      width: 200px;
+      padding: 1%;
+      margin: 2%;
+      text-align: center;
+      text-decoration: none;
+      color: #272727;
+      background-color: #e4e4e4;
+    }
+    .body .box a:hover {
+      background-color: #d8d8d8;
+    }
+  </style>
+{% endblock header_script %}
+{% block content %}
+<div class="container">
+  <!-- Content Section -->
+  <div class="content-section">
+    <!-- Header-->
+    <div class="header">
+      <div class="title d-flex flex-column align-items-center">
+        <h1>DjangoTelBOT</h1>
+        <h2>Send Message to Telegram Channel</h2>
+        <p class="mb-0">Channel: testDjangoTel</p>
+        <p>link: <a href="https://t.me/testDjangoTel" target="_blank">https://t.me/testDjangoTel</a></p>
+        <p class="mb-0">BOT: DjangoTelBOT</p>
+        <p>link: <a href="https://t.me/testDjangoTel_bot" target="_blank">https://t.me/testDjangoTel_bot</a></p>
+      </div>
+    </div>
+    <!-- Body -->
+    <div class="body">
+      <div class="box d-flex flex-column justify-content-center align-items-center">
+        {% for x in textItem %}
+          <a href="test/{{ x.id }}">{{ x.command }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
